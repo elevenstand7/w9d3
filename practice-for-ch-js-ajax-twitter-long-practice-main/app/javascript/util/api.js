@@ -3,10 +3,12 @@ const csrfToken = document.querySelector("meta[name=csrf-token]").content;
 async function customFetch(url, options = {}) {
   options.headers = {
     // Your code here
+    Accept: application/json,
+    "X-CSRF-Token": "csrfToken",
     ...options.headers
   };
-
-  return await fetch(url, options);
+  let response = fetch(url, options);
+  return await response.json();
 }
 
 const followUser = id => {
