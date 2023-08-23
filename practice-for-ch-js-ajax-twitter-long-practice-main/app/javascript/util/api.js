@@ -8,3 +8,16 @@ async function customFetch(url, options = {}) {
 
   return await fetch(url, options);
 }
+
+const followUser = id => {
+  return customFetch(`/users/${id}/follow`,{
+    method: 'POST'
+  })
+};
+
+
+const unfollowUser = id => {
+  return customFetch(`/users/${id}/follow`,{
+    method: 'DELETE'
+  })
+};
